@@ -1,74 +1,110 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
-    android:padding="20dp">
+    android:background="#0F1115"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <TextView
-        android:id="@+id/txtEmergency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SOLICITO AYUDA / EMERGENCY"
-        android:textColor="#FF0000"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"/>
-
+    <!-- PANEL SUPERIOR: LOGO E IDENTIDAD -->
     <LinearLayout
-        android:id="@+id/configContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtEmergency"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
+        android:background="@drawable/panel_border_cyan"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp">
+
+        <ImageView
+            android:id="@+id/logo_authority"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_authority_logo"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="Van Cartier Authority Logo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VVC-EMERGENCY-SIGNAL"
+                android:textColor="#00E5FF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="monospace" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The Van Cartier Authority | CRITICAL STATE"
+                android:textColor="#FF3366"
+                android:textSize="11sp"
+                android:fontFamily="monospace" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- TARJETA DE MONITOREO Y AJUSTES -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/panel_border_cyan"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_marginBottom="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CONFIGURACIÓN_DE_SEÑAL"
+            android:textColor="#00E5FF"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="12dp" />
 
         <EditText
-            android:id="@+id/etEmergencyContact"
+            android:id="@+id/input_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Teléfono de Emergencia"
+            android:textColorHint="#556677"
             android:textColor="#FFFFFF"
-            android:textColorHint="#88FFFFFF"
-            android:backgroundTint="#00FF00"
+            android:backgroundTint="#00E5FF"
+            android:textSize="14sp"
+            android:fontFamily="monospace"
             android:inputType="phone"
-            android:padding="12dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="12dp" />
 
         <EditText
-            android:id="@+id/etVoiceCodeWord"
+            android:id="@+id/input_alpha_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Palabra Clave de Voz"
+            android:hint="Código de Validación Alfa"
+            android:textColorHint="#556677"
             android:textColor="#FFFFFF"
-            android:textColorHint="#88FFFFFF"
-            android:backgroundTint="#00FF00"
-            android:inputType="text"
-            android:padding="12dp"/>
+            android:backgroundTint="#00E5FF"
+            android:textSize="14sp"
+            android:fontFamily="monospace"
+            android:inputType="textPassword"
+            android:layout_marginBottom="8dp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtContact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Configura tus datos arriba antes de activar"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
-        android:layout_below="@id/configContainer"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:gravity="center"/>
-
+    <!-- BOTÓN TÁCTICO DE ACTIVACIÓN (SOS) -->
     <Button
-        android:id="@+id/btnTrigger"
-        android:layout_width="220dp"
-        android:layout_height="220dp"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/txtContact"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="#00FF00"
-        android:text="SEÑAL S.O.S."
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-</RelativeLayout>
+        android:id="@+id/btn_sos"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:backgroundTint="#FF3366"
+        android:text="[ TRANSMITIR S.O.S. ]"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:fontFamily="monospace"
+        android:letterSpacing="0.1" />
+
+</LinearLayout>
