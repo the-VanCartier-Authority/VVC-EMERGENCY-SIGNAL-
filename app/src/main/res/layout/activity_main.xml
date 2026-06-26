@@ -59,7 +59,7 @@
 
         <TextView
             android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            android:layout_height="wrap_content"
             android:text="TELEMETRÍA_Y_CONFIGURACIÓN"
             android:textColor="#00E5FF"
             android:textSize="12sp"
@@ -68,7 +68,7 @@
             android:layout_marginBottom="16dp" />
 
         <EditText
-            android:id="@+id/input_phone"
+            android:id="@+id/etEmergencyContact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Teléfono de Emergencia"
@@ -81,7 +81,7 @@
             android:layout_marginBottom="16dp" />
 
         <EditText
-            android:id="@+id/input_alpha_code"
+            android:id="@+id/etVoiceCodeWord"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="código alfa"
@@ -96,7 +96,7 @@
 
     <!-- CRITICAL ACTION: TRANSMISIÓN DE SEÑAL -->
     <Button
-        android:id="@+id/btn_sos"
+        android:id="@+id/btnTrigger"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:backgroundTint="#FF3366"
