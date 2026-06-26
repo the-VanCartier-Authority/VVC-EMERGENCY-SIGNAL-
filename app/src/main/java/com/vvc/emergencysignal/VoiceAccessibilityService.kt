@@ -3,6 +3,8 @@ package com.vvc.emergencysignal
 import android.accessibilityservice.AccessibilityService
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
@@ -13,6 +15,7 @@ class VoiceAccessibilityService : AccessibilityService(), RecognitionListener {
 
     private var speechRecognizer: SpeechRecognizer? = null
     private val codeWord = "código alfa"
+    private val handler = Handler(Looper.getMainLooper())
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
         if (event?.eventType == AccessibilityEvent.TYPE_VIEW_CLICKED) {
@@ -43,10 +46,25 @@ class VoiceAccessibilityService : AccessibilityService(), RecognitionListener {
             val emergencyIntent = Intent(this, EmergencyService::class.java)
             startService(emergencyIntent)
         }
+        // Restart listening after processing results to keep the loop alive
+        startListeningOffline()
+    }
+
+    override fun onError(error: Int) {
+        if (error == SpeechRecognizer.ERROR_RECOGNIZER_BUSY || error == SpeechRecognizer.ERROR_SPEECH_TIMEOUT) {
+            shutdownRecognizer()
+            handler.postDelayed({
+                startListeningOffline()
+            }, 500)
+        }
     }
 
     override fun onInterrupt() { shutdownRecognizer() }
-    override fun onDestroy() { shutdownRecognizer(); super.onDestroy() }
+    override fun onDestroy() { 
+        handler.removeCallbacksAndMessages(null)
+        shutdownRecognizer()
+        super.onDestroy() 
+    }
 
     private fun shutdownRecognizer() {
         speechRecognizer?.destroy()
@@ -58,7 +76,6 @@ class VoiceAccessibilityService : AccessibilityService(), RecognitionListener {
     override fun onRmsChanged(rmsdB: Float) {}
     override fun onBufferReceived(buffer: ByteArray?) {}
     override fun onEndOfSpeech() {}
-    override fun onError(error: Int) {}
     override fun onPartialResults(partialResults: Bundle?) {}
     override fun onEvent(eventType: Int, params: Bundle?) {}
 }
