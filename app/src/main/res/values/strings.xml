@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">VVC Emergency Signal</string>
+    <string name="accessibility_description">Permite la activación de la señal de emergencia mediante comandos de voz.</string>
+</resources>
