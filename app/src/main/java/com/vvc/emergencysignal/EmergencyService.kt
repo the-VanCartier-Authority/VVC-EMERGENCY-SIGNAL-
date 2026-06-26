@@ -20,7 +20,6 @@ class EmergencyService : Service() {
     private lateinit var cameraManager: CameraManager
     private var cameraId: String? = null
     private lateinit var vibrator: Vibrator
-    private val trustedPhoneNumber = "+521234567890" // Placeholder, should be configurable
 
     private val sosPattern = longArrayOf(
         0, 
@@ -52,6 +51,14 @@ class EmergencyService : Service() {
 
     private fun sendEmergencySMS() {
         try {
+            val sharedPrefs = getSharedPreferences("VVC_PREFS", Context.MODE_PRIVATE)
+            val targetPhone = sharedPrefs.getString("PREF_EMERGENCY_CONTACT", "")
+            
+            if (targetPhone.isNullOrEmpty()) {
+                // Abort SMS dispatch but continue Morse loop
+                return
+            }
+
             val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
             
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
@@ -68,7 +75,7 @@ class EmergencyService : Service() {
             val message = "¡ALERTA DE EMERGENCIA VVC! Necesito ayuda urgente. Mi ubicación actual: https://www.google.com/maps/search/?api=1&query=$latitude,$longitude"
             
             val smsManager: SmsManager = this.getSystemService(SmsManager::class.java)
-            smsManager.sendTextMessage(trustedPhoneNumber, null, message, null, null)
+            smsManager.sendTextMessage(targetPhone, null, message, null, null)
             
         } catch (e: SecurityException) {
             e.printStackTrace()

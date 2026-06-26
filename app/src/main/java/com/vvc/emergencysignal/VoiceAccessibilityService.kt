@@ -1,6 +1,7 @@
 package com.vvc.emergencysignal
 
 import android.accessibilityservice.AccessibilityService
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -14,7 +15,6 @@ import java.util.Locale
 class VoiceAccessibilityService : AccessibilityService(), RecognitionListener {
 
     private var speechRecognizer: SpeechRecognizer? = null
-    private val codeWord = "código alfa"
     private val handler = Handler(Looper.getMainLooper())
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
@@ -39,14 +39,16 @@ class VoiceAccessibilityService : AccessibilityService(), RecognitionListener {
     }
 
     override fun onResults(results: Bundle?) {
+        val sharedPrefs = getSharedPreferences("VVC_PREFS", Context.MODE_PRIVATE)
+        val dynamicCodeWord = sharedPrefs.getString("PREF_VOICE_CODEWORD", "código alfa") ?: "código alfa"
+        
         val matches = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
         val text = matches?.get(0)?.lowercase(Locale.getDefault()) ?: ""
         
-        if (text.contains(codeWord)) {
+        if (text.contains(dynamicCodeWord.lowercase(Locale.getDefault()))) {
             val emergencyIntent = Intent(this, EmergencyService::class.java)
             startService(emergencyIntent)
         }
-        // Restart listening after processing results to keep the loop alive
         startListeningOffline()
     }
 

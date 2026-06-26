@@ -13,25 +13,59 @@
         android:textSize="32sp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="30dp"/>
+
+    <LinearLayout
+        android:id="@+id/configContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtEmergency"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/etEmergencyContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Teléfono de Emergencia"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#88FFFFFF"
+            android:backgroundTint="#00FF00"
+            android:inputType="phone"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:id="@+id/etVoiceCodeWord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Palabra Clave de Voz"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#88FFFFFF"
+            android:backgroundTint="#00FF00"
+            android:inputType="text"
+            android:padding="12dp"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/txtContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Contacto de Confianza:\n[Familiar] - [Teléfono]"
+        android:text="Configura tus datos arriba antes de activar"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:layout_below="@id/txtEmergency"
+        android:textSize="14sp"
+        android:layout_below="@id/configContainer"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"/>
 
     <Button
         android:id="@+id/btnTrigger"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
         android:layout_centerInParent="true"
+        android:layout_below="@id/txtContact"
+        android:layout_marginTop="30dp"
         android:backgroundTint="#00FF00"
         android:text="SEÑAL S.O.S."
         android:textColor="#000000"
