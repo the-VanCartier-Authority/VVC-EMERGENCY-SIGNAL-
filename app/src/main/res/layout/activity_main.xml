@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0F1115"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- PANEL SUPERIOR: LOGO E IDENTIDAD -->
+    <!-- PANEL SUPERIOR: IDENTIDAD CORPORATIVA VVC -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/panel_border_cyan"
         android:orientation="horizontal"
         android:padding="12dp"
-        android:layout_marginBottom="16dp">
+        android:layout_marginBottom="16dp"
+        android:gravity="center_vertical">
 
         <ImageView
             android:id="@+id/logo_authority"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_authority_logo"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@mipmap/ic_launcher"
             android:layout_marginEnd="12dp"
             android:contentDescription="Van Cartier Authority Logo" />
 
@@ -34,21 +34,21 @@
                 android:layout_height="wrap_content"
                 android:text="VVC-EMERGENCY-SIGNAL"
                 android:textColor="#00E5FF"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:fontFamily="monospace" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="The Van Cartier Authority | CRITICAL STATE"
-                android:textColor="#FF3366"
+                android:text="The Van Cartier Authority | SYS: READY"
+                android:textColor="#A0AAB5"
                 android:textSize="11sp"
                 android:fontFamily="monospace" />
         </LinearLayout>
     </LinearLayout>
 
-    <!-- TARJETA DE MONITOREO Y AJUSTES -->
+    <!-- TARJETA TÁCTICA DE MONITOREO / AJUSTES -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,52 +59,52 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CONFIGURACIÓN_DE_SEÑAL"
+                android:layout_height="wrap_content"
+            android:text="TELEMETRÍA_Y_CONFIGURACIÓN"
             android:textColor="#00E5FF"
-            android:textSize="13sp"
+            android:textSize="12sp"
             android:textStyle="bold"
             android:fontFamily="monospace"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="16dp" />
 
         <EditText
             android:id="@+id/input_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Teléfono de Emergencia"
-            android:textColorHint="#556677"
+            android:textColorHint="#445566"
             android:textColor="#FFFFFF"
             android:backgroundTint="#00E5FF"
             android:textSize="14sp"
             android:fontFamily="monospace"
             android:inputType="phone"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="16dp" />
 
         <EditText
             android:id="@+id/input_alpha_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Código de Validación Alfa"
-            android:textColorHint="#556677"
+            android:hint="código alfa"
+            android:textColorHint="#445566"
             android:textColor="#FFFFFF"
             android:backgroundTint="#00E5FF"
             android:textSize="14sp"
             android:fontFamily="monospace"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:layout_marginBottom="8dp" />
     </LinearLayout>
 
-    <!-- BOTÓN TÁCTICO DE ACTIVACIÓN (SOS) -->
+    <!-- CRITICAL ACTION: TRANSMISIÓN DE SEÑAL -->
     <Button
         android:id="@+id/btn_sos"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="60dp"
         android:backgroundTint="#FF3366"
-        android:text="[ TRANSMITIR S.O.S. ]"
+        android:text="[ SEÑAL S.O.S. ]"
         android:textColor="#FFFFFF"
-        android:textSize="16sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:fontFamily="monospace"
-        android:letterSpacing="0.1" />
+        android:letterSpacing="0.05" />
 
 </LinearLayout>
