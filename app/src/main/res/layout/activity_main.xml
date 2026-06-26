@@ -1,0 +1,40 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/txtEmergency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SOLICITO AYUDA / EMERGENCY"
+        android:textColor="#FF0000"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"/>
+
+    <TextView
+        android:id="@+id/txtContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contacto de Confianza:\n[Familiar] - [Teléfono]"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:layout_below="@id/txtEmergency"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/btnTrigger"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerInParent="true"
+        android:backgroundTint="#00FF00"
+        android:text="SEÑAL S.O.S."
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+</RelativeLayout>
