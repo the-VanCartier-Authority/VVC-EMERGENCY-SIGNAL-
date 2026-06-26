@@ -23,21 +23,16 @@ jobs:
 
     - name: Download Full Gradle Wrapper (Shell & Jar)
       run: |
-        # Descargar el script ejecutable
         curl -sL https://raw.githubusercontent.com/gradle/gradle/v8.5.0/gradlew -o gradlew
         chmod +x gradlew
-        
-        # Crear la estructura de carpetas necesaria
         mkdir -p gradle/wrapper
-        
-        # Descargar el binario .jar ejecutable que faltaba
         curl -sL https://raw.githubusercontent.com/gradle/gradle/v8.5.0/gradle/wrapper/gradle-wrapper.jar -o gradle/wrapper/gradle-wrapper.jar
 
     - name: Compile and Build Debug APK
       run: ./gradlew assembleDebug
 
     - name: Upload Compiled APK Artifact
-      uses: actions/actions/upload-artifact@v4
+      uses: actions/upload-artifact@v4
       with:
         name: vvc-emergency-signal-debug
         path: app/build/outputs/apk/debug/app-debug.apk
