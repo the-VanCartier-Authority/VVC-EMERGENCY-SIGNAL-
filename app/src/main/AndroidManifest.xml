@@ -13,7 +13,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="VVC Emergency Signal"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
+        android:theme="@style/Theme.VVCEMERGENCYSIGNAL">
         
         <activity android:name=".MainActivity"
             android:exported="true">

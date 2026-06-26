@@ -74,7 +74,11 @@ class EmergencyService : Service() {
 
             val message = "¡ALERTA DE EMERGENCIA VVC! Necesito ayuda urgente. Mi ubicación actual: https://www.google.com/maps/search/?api=1&query=$latitude,$longitude"
             
-            val smsManager: SmsManager = this.getSystemService(SmsManager::class.java)
+            val smsManager: SmsManager = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                this.getSystemService(SmsManager::class.java)
+            } else {
+                SmsManager.getDefault()
+            }
             smsManager.sendTextMessage(targetPhone, null, message, null, null)
             
         } catch (e: SecurityException) {
