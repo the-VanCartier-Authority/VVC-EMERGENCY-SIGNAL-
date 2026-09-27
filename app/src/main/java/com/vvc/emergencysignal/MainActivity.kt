@@ -31,7 +31,8 @@ class MainActivity : AppCompatActivity() {
         etEmergencyContact.onFocusChangeListener = listener
         etVoiceCodeWord.onFocusChangeListener = listener
 
-        findViewById<Button>(R.id.btnTrigger).setOnClickListener { button ->
+        val triggerButton = findViewById<Button>(R.id.btnTrigger)
+        triggerButton.setOnClickListener {
             savePreferences()
             if (!isAccessibilityServiceEnabled(this, VoiceAccessibilityService::class.java)) {
                 Toast.makeText(this, "Activa el Servicio de Accesibilidad para el disparador por voz.", Toast.LENGTH_LONG).show()
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                 ActivityCompat.requestPermissions(this, missing.toTypedArray(), REQUEST_PERMISSIONS)
                 return@setOnClickListener
             }
-            toggleEmergencyService(button)
+            toggleEmergencyService(triggerButton)
         }
     }
 
