@@ -19,6 +19,9 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            if (providers.gradleProperty("ciDebugSignRelease").orNull == "true") {
+                signingConfig = signingConfigs.getByName("debug")
+            }
         }
     }
     compileOptions {
